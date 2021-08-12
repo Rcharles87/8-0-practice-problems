@@ -44,26 +44,34 @@ function speciesCount(pets) {
  * }
  */
 function dueForCheckupCount(pets) {
-    let trueCount = 0 
-    let falseCount = 0
     let trueObj={}
-    for (let i=0; i<pets.length; i++){
-        if (pets[i].dueForCheckup === true){
-            trueCount++
-            trueObj[true]=trueCount
+    // let trueCount = 0 
+    // let falseCount = 0
+    // for (let i=0; i<pets.length; i++){
+    //     if (pets[i].dueForCheckup === true){
+    //         trueCount++
+    //         trueObj[true]=trueCount
             
-        }
-         if (pets[i].dueForCheckup === false){
-            falseCount++
-            trueObj[false]=falseCount
+    //     }
+    //      if (pets[i].dueForCheckup === false){
+    //         falseCount++
+    //         trueObj[false]=falseCount
             
-        }
+    //     }
         
-    }
+    // }
+        for (let pet of pets){
+            if (!trueObj[pet.dueForCheckup]){
+                trueObj[pet.dueForCheckup]= 1
+            }
+            else {
+                trueObj[pet.dueForCheckup]+=1
+            }
+        }
     return trueObj
 } 
 // console.log(trueObj)
-// console.log(dueForCheckupCount(petsData))
+console.log(dueForCheckupCount(petsData))
 /**
  * friendsWithCount()
  * -----------------------------
@@ -81,19 +89,16 @@ function dueForCheckupCount(pets) {
  * }
  */
 function friendsWithCount(pets) {
-    let count = 0
     countObj = {}
-    let sameFriends = 0
-    for(let i = 0; i < pets.length; i++){
-        if (pets[i].friendsWith.length > 0){
-            count = pets[i].friendsWith.length
-            
+    for(let pet of pets){
+        if(!countObj[pet.friendsWith.length]){
+        countObj[pet.friendsWith.length] = 1
         }
-        if (pets[i].friendsWith.length === count){
-            countObj[count]= sameFriends  
-        }
-        sameFriends++
+        else {
+            countObj[pet.friendsWith.length]+=1
+        } 
     }
+
     return countObj
 }
 console.log(friendsWithCount(petsData))

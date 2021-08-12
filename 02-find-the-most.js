@@ -127,13 +127,14 @@ console.log(getLightestPet(petsData))
  *  > 17
  */
 function getLowestCaretakerAge(pets) {
+    if(!pets.length){
+       return 0
+    }
     let lowestAge = pets[0].caretakerAge
+    
     for (pet of pets){
         if(pet.caretakerAge < lowestAge){
             lowestAge = pet.caretakerAge
-        }
-        else if(!pets){
-            lowestAge =0
         }
     }
     return Number(lowestAge)
