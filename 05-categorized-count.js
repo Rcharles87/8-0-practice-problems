@@ -15,8 +15,19 @@ const petsData = require("./pets-data.js");
  * cat: 3
  * }
  */
-function speciesCount() {}
-
+function speciesCount(pets) {
+    let speciesObj = {}
+    for (pet of pets){
+        if(!speciesObj[pet.species]){
+            speciesObj[pet.species]=1
+        }
+        else {
+            speciesObj[pet.species]+= 1
+        }
+    }
+    return speciesObj
+}
+// console.log(speciesCount(petsData))
 /**
  * dueForCheckupCount()
  * -----------------------------
@@ -32,8 +43,27 @@ function speciesCount() {}
  * false:2
  * }
  */
-function dueForCheckupCount() {}
-
+function dueForCheckupCount(pets) {
+    let trueCount = 0 
+    let falseCount = 0
+    let trueObj={}
+    for (let i=0; i<pets.length; i++){
+        if (pets[i].dueForCheckup === true){
+            trueCount++
+            trueObj[true]=trueCount
+            
+        }
+         if (pets[i].dueForCheckup === false){
+            falseCount++
+            trueObj[false]=falseCount
+            
+        }
+        
+    }
+    return trueObj
+} 
+// console.log(trueObj)
+// console.log(dueForCheckupCount(petsData))
 /**
  * friendsWithCount()
  * -----------------------------
@@ -50,4 +80,20 @@ function dueForCheckupCount() {}
  * 8: 1
  * }
  */
-function friendsWithCount() {}
+function friendsWithCount(pets) {
+    let count = 0
+    countObj = {}
+    let sameFriends = 0
+    for(let i = 0; i < pets.length; i++){
+        if (pets[i].friendsWith.length > 0){
+            count = pets[i].friendsWith.length
+            
+        }
+        if (pets[i].friendsWith.length === count){
+            countObj[count]= sameFriends  
+        }
+        sameFriends++
+    }
+    return countObj
+}
+console.log(friendsWithCount(petsData))

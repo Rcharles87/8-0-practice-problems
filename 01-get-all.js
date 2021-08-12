@@ -1,3 +1,4 @@
+const pets = require("./pets-data.js");
 const petsData = require("./pets-data.js");
 
 /**
@@ -11,8 +12,15 @@ const petsData = require("./pets-data.js");
  * > ["Deloba", "Tuba", "Percy", "Monkey", "Gia", "Gumby"]
  */
 
-function getAllPetNames() {}
+function getAllPetNames(pets) {
+    let newArr = []
+    for (let i=0; i < pets.length; i++){
+    newArr.push(pets[i].petName) 
+    }
+    return newArr
 
+}
+console.log(getAllPetNames(pets))
 /**
  * getAllCaretakerNames()
  * -----------------------------
@@ -24,8 +32,14 @@ function getAllPetNames() {}
  * > ["Sam", "Ari", "Nicole", "Katie", "Steven", "John"]
  */
 
-function getAllCaretakerNames() {}
-
+function getAllCaretakerNames(pets) {
+    let caretakerArr = []
+    for(let pet of pets){
+        caretakerArr.push(pet.caretakerName)
+    }
+    return caretakerArr
+}
+console.log(getAllCaretakerNames(pets))
 /**
  * getAllFavoriteFoods()
  * -----------------------------
@@ -37,8 +51,14 @@ function getAllCaretakerNames() {}
  * > ["watermelon", "mealworms", "fish", "dog food", "salami", "bacon"]
  */
 
-function getAllFavoriteFoods() {}
-
+function getAllFavoriteFoods(pets) {
+    let allFoods =[]
+    for (let pet of pets){
+     allFoods.push(pet.favoriteFood)   
+    }
+    return allFoods
+}
+console.log(getAllFavoriteFoods(pets))
 /**
  * getAllPetSpecies()
  * -----------------------------
@@ -50,8 +70,14 @@ function getAllFavoriteFoods() {}
  * > ["dog", "spotted gecko", "cat", "cat", "dog", "cat"]
  */
 
-function getAllPetSpecies() {}
-
+function getAllPetSpecies(pets) {
+    let allSpeciesArr = []
+    for (let i=0; i < pets.length;i++){
+        allSpeciesArr.push(pets[i].species)
+    }
+    return allSpeciesArr
+}
+console.log(getAllPetSpecies(pets))
 /**
  * getAllPetAges()
  * -----------------------------
@@ -63,8 +89,14 @@ function getAllPetSpecies() {}
  * > [8, 2, 1, 10, 3, 6]
  */
 
-function getAllPetAges() {}
-
+function getAllPetAges(pets) {
+    let petAgeArr = []
+    for(let i=0; i<pets.length;i++){
+        petAgeArr.push(pets[i].age)
+    }
+    return petAgeArr
+}
+console.log(getAllPetAges(pets))
 /**
  * totalAllPetAges()
  * -----------------------------
@@ -76,8 +108,14 @@ function getAllPetAges() {}
  * > 30
  */
 
-function totalAllPetAges() {}
-
+function totalAllPetAges(pets) {
+    let total = 0
+    for (let pet of pets){
+        total += pet.age
+    }
+    return total
+}
+console.log(totalAllPetAges(pets))
 /**
  * averageAllPetAges()
  * -----------------------------
@@ -89,8 +127,14 @@ function totalAllPetAges() {}
  * > 5
  */
 
-function averageAllPetAges() {}
-
+function averageAllPetAges(pets) {
+    let total = 0
+    for(let i=0;i<pets.length;i++){
+        total += pets[i].age/pets.length
+    }
+    return total
+}
+console.log(averageAllPetAges(pets))
 /**
  * averageAllCaretakerAges()
  * -----------------------------
@@ -102,4 +146,11 @@ function averageAllPetAges() {}
  * > 32.3333333
  */
 
-function averageAllCaretakerAges() {}
+function averageAllCaretakerAges(pets) {
+    let total = 0
+    for (let pet of pets){
+        total+= pet.caretakerAge/pets.length
+    }
+    return total
+}
+console.log(averageAllCaretakerAges(pets))

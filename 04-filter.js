@@ -1,3 +1,4 @@
+const pets = require("./pets-data.js");
 const petsData = require("./pets-data.js");
 
 /**
@@ -47,8 +48,18 @@ const petsData = require("./pets-data.js");
  *  filterBySpecies(pets, "parakeet")
  *  > []
  */
-function filterBySpecies() {}
-
+function filterBySpecies(petsData, species) {
+    speciesArr = []
+    for (let i=0; i<pets.length; i++){
+        if(pets[i].species === species){
+            speciesArr.push(pets[i])
+            // delete pets[i].friendsWith
+            // delete pets[i].dueForCheckup
+        }
+    }
+    return speciesArr
+}
+console.log(filterBySpecies(petsData, "cat"))
 /**
  * getNamesBySpecies()
  * -----------------------------
@@ -65,8 +76,16 @@ function filterBySpecies() {}
  *  getNamesBySpecies(pets, "parakeet")
  *  > []
  */
-function getNamesBySpecies() {}
-
+function getNamesBySpecies(pets, species) {
+    let speciesName = []
+    for (let pet of pets){
+        if(pet.species === species){
+            speciesName.push(pet.petName)
+        }
+    }
+    return speciesName
+}
+console.log(getNamesBySpecies(pets, "dog"))
 /**
  * filterByMinAge()
  * -----------------------------
@@ -114,8 +133,18 @@ function getNamesBySpecies() {}
  *  filterByMinAge(pets, 12)
  *  > []
  */
-function filterByMinAge() {}
-
+function filterByMinAge(pets, minAge ) {
+    let minAgeArr = []
+    for (let i=0; i<pets.length; i++){
+        if (pets[i].age >= minAge){
+            minAgeArr.push(pets[i])
+            // delete pets[i].friendsWith
+            // delete pets[i].dueForCheckup
+        }
+    }
+    return minAgeArr
+}
+console.log(filterByMinAge(pets, 5))
 /**
  * filterByMaxAge()
  * -----------------------------
@@ -163,8 +192,18 @@ function filterByMinAge() {}
  *  filterByMaxAge(pets, 0)
  *  > []
  */
-function filterByMaxAge() {}
-
+function filterByMaxAge(pets, maxAge) {
+    maxAgeArr = []
+    for (let i=0; i<pets.length; i++){
+        if(pets[i].age <= maxAge){
+            maxAgeArr.push(pets[i])
+            // delete pets[i].friendsWith
+            // delete pets[i].dueForCheckup
+        }
+    }
+    return maxAgeArr
+}
+console.log(filterByMaxAge(pets, 0))
 /**
  * findFriendsOf()
  * -----------------------------
@@ -181,8 +220,16 @@ function filterByMaxAge() {}
  *  findFriendsOf(pets, "Kevin")
  *  > []
  */
-function findFriendsOf() {}
-
+function findFriendsOf(pets,friend) {
+    friendsArr = []
+    for (let i=0; i<pets.length;i++){
+        if(pets[i].friendsWith.includes(friend)){
+       friendsArr.push(pets[i].petName)
+        }
+    }
+    return friendsArr
+}
+console.log(findFriendsOf(pets, "Remy"))
 /**
  * maxNumberOfFriends()
  * -----------------------------
@@ -199,4 +246,13 @@ function findFriendsOf() {}
  *  maxNumberOfFriends(pets, 0)
  *  > []
  */
-function maxNumberOfFriends() {}
+function maxNumberOfFriends(pets,maxFriends) {
+    let maxFriendsArr = []
+    for (let i=0; i<pets.length; i++){
+        if(pets[i].friendsWith.length <= maxFriends){
+            maxFriendsArr.push(pets[i].petName)
+        }
+    }
+    return maxFriendsArr
+}
+console.log(maxNumberOfFriends(pets,3))

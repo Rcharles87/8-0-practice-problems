@@ -26,8 +26,21 @@ EXAMPLE:
  *  findPetById(pets, 100);
  *  > "Could not find pet with ID of '100'."
  */
-function findPetById() {}
+function findPetById(pets,id) {
+    let foundPet = ""
 
+    for (let i=0; i<pets.length; i++){
+        if (pets[i].petId === id){
+            foundPet = pets[i]
+            // delete foundPet.friendsWith
+            // delete foundPet.dueForCheckup
+            return foundPet
+        }
+        
+    } 
+    return  `Could not find pet with ID of '${id}'.`                        
+}
+console.log(findPetById(petsData, 104))
 /**
  * findPetByName()
  * -----------------------------
@@ -54,8 +67,19 @@ EXAMPLE:
  *  findPetByName(pets, "Steven");
  *  > "Could not find pet with name of 'Steven'."
  */
-function findPetByName() {}
-
+function findPetByName(pets, name) {
+    let byName = ""
+    for(let i=0; i<pets.length; i++){
+        if(pets[i].petName === name){
+            byName = pets[i]
+            // delete byName.friendsWith
+            // delete byName.dueForCheckup
+            return byName
+        }
+    }
+    return `Could not find pet with name of '${name}'.`
+}
+console.log(findPetByName(petsData, "Gumby"))
 /**
  * findPetByCaretaker()
  * -----------------------------
@@ -82,8 +106,18 @@ function findPetByName() {}
  *  findPetByCaretaker(pets, "Sabrina");
  *  > "Could not find pet with caretaker named 'Sabrina'."
  */
-function findPetByCaretaker() {}
-
+function findPetByCaretaker(pets, name) {
+    let byCaretaker = ""
+    for (let i=0;i<pets.length;i++)
+    if (pets[i].caretakerName === name){
+        byCaretaker = pets[i]
+        // delete byCaretaker.friendsWith
+        // delete byCaretaker.dueForCheckup
+        return byCaretaker
+    }
+    return `Could not find pet with caretaker named '${name}'.`
+}
+console.log(findPetByCaretaker(petsData,"Nicole"))
 /**
  * findPetByFavoriteFood()
  * -----------------------------
@@ -102,4 +136,14 @@ function findPetByCaretaker() {}
  *  findPetByFavoriteFood(pets, "steak");
  *  > null
  */
-function findPetByFavoriteFood() {}
+function findPetByFavoriteFood(pets, food) {
+    let byFood = null
+    for(let i=0; i<pets.length; i++)
+    if(pets[i].favoriteFood === food){
+         byFood = pets[i].petName
+       
+        
+    }
+    return byFood
+}
+console.log(findPetByFavoriteFood(petsData, "watermelon"))
